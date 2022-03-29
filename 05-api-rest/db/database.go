@@ -69,8 +69,11 @@ func ExitsTable(tableName string) bool {
 	return rows.Next()
 }
 
+//polimorfismo de exec
 func Exec(query string, args ...interface{}) (sql.Result, error) {
+	Connect()
 	resust, err := db.Exec(query, args...)
+	Close()
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -78,8 +81,11 @@ func Exec(query string, args ...interface{}) (sql.Result, error) {
 	return resust, err
 }
 
+//polimorfismo de query
 func Query(query string, args ...interface{}) (*sql.Rows, error) {
+	Connect()
 	rows, err := db.Query(query, args...)
+	Close()
 	if err != nil {
 		fmt.Println("Error: ", err)
 	}
