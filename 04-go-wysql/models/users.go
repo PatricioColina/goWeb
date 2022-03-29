@@ -85,3 +85,9 @@ func (user *User) Save() {
 		user.update()
 	}
 }
+
+//eliminar registro
+func (user *User) Delete() {
+	sql := "DELETE FROM users WHERE id=?"
+	db.Exec(sql, user.Id)
+}

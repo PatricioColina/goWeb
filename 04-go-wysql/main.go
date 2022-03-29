@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"gomysql/db"
-	"gomysql/models"
 )
 
 func main() {
@@ -16,12 +14,17 @@ func main() {
 
 	//fmt.Println(users)
 
-	user := models.GetUser(2)
+	/*user := models.GetUser(2)
 	fmt.Println(user)
-	user.UserName = "Juan"
-	user.Save()
+
+	user.Delete()
+	//user.UserName = "Juan"
+	//user.Save()
 	fmt.Println(user)
-	//fmt.Println(user)
+	users := models.ListUsers()
+	fmt.Println(users)*/
+
+	db.TruncateTable("users")
 	db.Close()
 	//db.Ping()//validacion erronea ya que la bd esta cerrada
 }
