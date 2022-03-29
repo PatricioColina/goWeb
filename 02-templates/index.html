@@ -6,8 +6,14 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
-    {{saludar "Alex"}}
+    {{template "header"}}
+
+
+    <!--herencia de html-->
+    <h3>Hola {{.UserName}}</h3>
+    <p>Edad: {{.Edad}} </p>
+
+    {{template "foother"}}
 
 </body>
 </html>

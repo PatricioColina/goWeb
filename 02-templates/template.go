@@ -24,31 +24,31 @@ func Saludar(nombre string) string {
 }
 
 func Index(rw http.ResponseWriter, r *http.Request) {
-	/*
-		c1 := Curso{"GO"}
-		c2 := Curso{"Python"}
-		c3 := Curso{"HTML"}
-		c4 := Curso{"JAVA"}
-		c5 := Curso{"C#"}
 
-		//fmt.Fprintln(rw, " hola mundo")
-	*/
+	c1 := Curso{"GO"}
+	c2 := Curso{"Python"}
+	c3 := Curso{"HTML"}
+	c4 := Curso{"JAVA"}
+	c5 := Curso{"C#"}
 
-	//template, err := template.ParseFiles("index.html")
-	funciones := template.FuncMap{
+	//fmt.Fprintln(rw, " hola mundo")
+
+	//template, err := template.ParseFiles("index.html", "base.html")
+	template, err := template.New("index.html").ParseFiles("index.html", "base.html")
+	/*funciones := template.FuncMap{
 		"saludar": Saludar,
-	}
-	template, err := template.New("index.html").Funcs(funciones).ParseFiles("index.html")
+	}*/
+	//template, err := template.New("index.html").Funcs(funciones).ParseFiles("index.html")
 
-	//cursos := []Curso{c1, c2, c3, c4, c5}
+	cursos := []Curso{c1, c2, c3, c4, c5}
 
-	//usuario := Usuarios{"patricio", 36, true, false, cursos}
+	usuario := Usuarios{"patricio", 36, true, false, cursos}
 
 	if err != nil {
 		panic(err)
 	} else {
 		//template.Execute(rw, nil)
-		template.Execute(rw, nil)
+		template.Execute(rw, usuario)
 	}
 }
 
