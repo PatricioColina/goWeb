@@ -62,3 +62,21 @@ func ExitsTable(tableName string) bool {
 
 	return rows.Next()
 }
+
+func Exec(query string, args ...interface{}) (sql.Result, error) {
+	resust, err := db.Exec(query, args...)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return resust, err
+}
+
+func Query(query string, args ...interface{}) (*sql.Rows, error) {
+	rows, err := db.Query(query, args...)
+	if err != nil {
+		fmt.Println("Error: ", err)
+	}
+
+	return rows, err
+}
