@@ -68,3 +68,20 @@ func GetUser(id int) *User {
 
 	return user
 }
+
+//editar registro
+func (user *User) update() {
+	sql := "UPDATE users SET usrname=?,password=?,email=? WHERE id=?"
+
+	db.Exec(sql, user.UserName, user.Password, user.Email, user.Id)
+
+}
+
+//guardar o editar registro
+func (user *User) Save() {
+	if user.Id == 0 {
+		user.insert()
+	} else {
+		user.update()
+	}
+}

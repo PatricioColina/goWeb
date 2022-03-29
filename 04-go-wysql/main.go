@@ -12,11 +12,14 @@ func main() {
 	//db.Ping()
 	//db.TruncateTable("users")
 	//user := models.CreateUsers("Patricio", "pato123", "al@gmil.com")
-	users := models.ListUsers()
+	//users := models.ListUsers()
 
-	fmt.Println(users)
+	//fmt.Println(users)
 
 	user := models.GetUser(2)
+	fmt.Println(user)
+	user.UserName = "Juan"
+	user.Save()
 	fmt.Println(user)
 	//fmt.Println(user)
 	db.Close()
