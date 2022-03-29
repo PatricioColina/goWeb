@@ -52,6 +52,12 @@ func CreateTable(schema string, name string) {
 
 }
 
+//reiniciar tabla
+func TruncateTable(tableName string) {
+	sql := fmt.Sprintf("TRUNCATE TABLE %s", tableName)
+	Exec(sql)
+}
+
 //funcion que valida la tabla
 func ExitsTable(tableName string) bool {
 	sql := fmt.Sprintf("SHOW TABLE LIKE '%S'", tableName)
