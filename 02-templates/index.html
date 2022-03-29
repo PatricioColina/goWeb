@@ -7,48 +7,7 @@
 </head>
 <body>
     <h1>Hola Mundo</h1>
-    <h3>Hola {{ .UserName }}</h3>
-    <p>Edad: {{.Edad}}</p>
-
-    <!--Variables-->
-    {{with $valor:="Mi variable"}}
-        <p>{{$valor}}</p>
-    {{end}}
-
-    <!--operadores logicos
-        not !
-        and &&
-        or ||
-    -->
-    {{if  .Activo}}
-        <p>El Usuario esta activo en la plataforma</p>
-    {{else}}
-        <p>El usuario NO esta activo</p>
-    {{end}}
-
-    {{if (and .Activo .Admin)}}
-        <p>Eres administrador</p>
-    {{end}}
-
-    <!--operadores condicionales
-        eq ==
-        ne !=
-        lt <
-        le <=
-        gt > 
-        ge >= 
-    -->
-    {{if gt .Edad 22}}
-        <p>El usuario es mayor que 22 años</p>
-    {{end}}
-
-    <h1>Bucles</h1>
-    <ul>
-        {{range .Cursos}}
-            <li>{{.Nombre}}</li>
-        {{end}}
-    </ul>
-
+    {{saludar }}
 
 </body>
 </html>
