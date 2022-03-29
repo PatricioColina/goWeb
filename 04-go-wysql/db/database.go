@@ -60,7 +60,7 @@ func TruncateTable(tableName string) {
 
 //funcion que valida la tabla
 func ExitsTable(tableName string) bool {
-	sql := fmt.Sprintf("SHOW TABLE LIKE '%S'", tableName)
+	sql := fmt.Sprintf("SHOW TABLE LIKE '%s'", tableName)
 	rows, err := db.Query(sql)
 	if err != nil {
 		fmt.Println("Error: ", err)
