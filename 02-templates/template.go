@@ -19,8 +19,8 @@ type Curso struct {
 	Nombre string
 }
 
-func Saludar() string {
-	return "Hola desde una funcion"
+func Saludar(nombre string) string {
+	return "Hola " + nombre + " desde una funcion"
 }
 
 func Index(rw http.ResponseWriter, r *http.Request) {
