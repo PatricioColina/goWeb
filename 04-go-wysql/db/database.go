@@ -39,3 +39,8 @@ func Ping() {
 		panic(err)
 	}
 }
+
+//CREA UNA TABLA
+func CreateTable(schema string) {
+	db.Exec(schema)
+}
