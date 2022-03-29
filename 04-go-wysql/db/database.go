@@ -41,6 +41,24 @@ func Ping() {
 }
 
 //CREA UNA TABLA
-func CreateTable(schema string) {
-	db.Exec(schema)
+func CreateTable(schema string, name string) {
+	if !ExitsTable(name) {
+		_, err := db.Exec(schema)
+
+		if err != nil {
+			fmt.Println("Error: ", err)
+		}
+	}
+
+}
+
+//funcion que valida la tabla
+func ExitsTable(tableName string) bool {
+	sql := fmt.Sprintf("SHOW TABLE LIKE '%S'", tableName)
+	rows, err := db.Query(sql)
+	if err != nil {
+		fmt.Println("Error: ", err)
+	}
+
+	return rows.Next()
 }
