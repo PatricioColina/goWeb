@@ -9,6 +9,8 @@ type User struct {
 	Email    string
 }
 
+type Users []User
+
 const UserSchame string = `CREATE TABLE users (
 	id int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	usrname VARCHAR(30) NOT NULL,
@@ -37,4 +39,20 @@ func (user *User) insert() {
 
 	user.Id, _ = result.LastInsertId()
 
+}
+
+//listar registros
+func ListUsers() Users {
+	sql := "SELECT id, usrname,password, email FROM users"
+	users := Users{}
+
+	rows, _ := db.Query(sql)
+
+	for rows.Next() {
+		user := User{}
+		rows.Scan(&user.Id, &user.UserName, &user.Password, &user.Email)
+		users = append(users, user)
+	}
+
+	return users
 }
