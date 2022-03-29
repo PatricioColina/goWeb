@@ -3,10 +3,10 @@ package models
 import "apirest/db"
 
 type User struct {
-	Id       int64
-	UserName string
-	Password string
-	Email    string
+	Id       int64  `json:"id"` //alias para el jason
+	UserName string `json:"userName"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
 }
 
 type Users []User
