@@ -25,6 +25,14 @@ func Saludar(nombre string) string {
 
 var templates = template.Must(template.New("T").ParseGlob("templates/**/*.html")) //de tener mas paginas se agregan aca
 
+func renderTemplate(rw http.ResponseWriter, name string, data interface{}) {
+	err := templates.ExecuteTemplate(rw, name, data)
+
+	if err != nil {
+		panic(err)
+	}
+}
+
 func Index(rw http.ResponseWriter, r *http.Request) {
 
 	c1 := Curso{"GO"}
@@ -48,19 +56,17 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 
 	//template.Execute(rw, nil)
 	//template.Execute(rw, usuario)
-	err := templates.ExecuteTemplate(rw, "index.html", usuario)
+	/*err := templates.ExecuteTemplate(rw, "index.html", usuario)
 
 	if err != nil {
 		panic(err)
-	}
+	}*/
+	renderTemplate(rw, "index.html", usuario)
+
 }
 
 func Registro(rw http.ResponseWriter, r *http.Request) {
-	err := templates.ExecuteTemplate(rw, "registro.html", nil)
-
-	if err != nil {
-		panic(err)
-	}
+	renderTemplate(rw, "registro.html", nil)
 }
 
 func main() {
