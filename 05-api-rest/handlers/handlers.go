@@ -1,12 +1,23 @@
 package handlers
 
 import (
+	"apirest/db"
+	"apirest/models"
+	"encoding/json"
 	"fmt"
 	"net/http"
 )
 
 func GetUsers(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(rw, "Lista todos los Usuarios")
+	//fmt.Fprintln(rw, "Lista todos los Usuarios")
+	db.Connect()
+	users := models.ListUsers()
+	db.Close()
+	//trasnformar a json
+	output, _ := json.Marshal(users)
+
+	fmt.Fprintln(rw, string(output))
+
 }
 
 func GetUser(rw http.ResponseWriter, r *http.Request) {
